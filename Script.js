@@ -33,20 +33,23 @@ let acceptData = () => {
     createPost()
 }
 
-let createPost = () => {
+const createPost = () => {
+    const todoId = Math.random().toString(36).substring(7);
+  
     posts.innerHTML += `
-    <div class="mt-3">
-    <p>${data.text}</p>
-    <span class="options">
-      <i onClick="editPost(this)" class="fas fa-edit ml-5"></i>
-      <i onClick="deletePost(this)" class="fas fa-trash-alt"></i>
-    </span>
-    <span class="mr-7 ml-7 text-sm">Thur 2, 2023</span>
-    <span class="bg-red-700 text-xs rounded-full px-2 py-0.5 text-slate-800 mt-1">pending</span>
-  </div>
-    `
-    input.value = ""
-}
+      <div class="mt-3" data-id="${todoId}">
+        <button>${data.text}</button>
+        <span class="options">
+          <i onClick="editPost(this)" class="fas fa-edit ml-5"></i>
+          <i onClick="deletePost(this)" class="fas fa-trash-alt"></i>
+        </span>
+        <span class="mr-7 ml-7 text-sm">Thur 2, 2023</span>
+        <span class="bg-red-700 text-xs rounded-full px-2 py-0.5 text-slate-800 mt-1">pending</span>
+      </div>
+    `;
+  
+    input.value = "";
+  };
 
 //Delete Post
 let deletePost = (e) => {
@@ -60,6 +63,11 @@ let editPost = (e) => {
 }
 
 
-const handlePreviewTodo = (id)=>{
-    console.log(id)
-}
+
+
+const handlePreviewTodo = (id) => {
+    // Find the todo element with the given ID.
+    const todoElement = document.querySelector(`[data-id="${id}"]`);
+  
+    // ...
+  };
